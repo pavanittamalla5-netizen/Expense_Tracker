@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main-container{
+            border: 2px solid black;
+            height: 100vh;
+        }
+        .title-container{
+            /* border: 2px solid black; */
+           background-color: rgb(165, 197, 136);
+        }
+        .title{
+            text-align: center;
+        }
+        .inputs{
+           /* border: 2px solid black; */
+           padding: 20px;
+           margin-top: 10px;
+           display: flex;
+        }
+        .input-group{
+            margin: 10px;
+        }
+        .btn{
+        width: 90px;
+        height: 50px;
+        /* border: none; */
+        border-radius: 20px;
+       background-color: rgb(165, 197, 136);
+        }
+        .cards{
+            /* border: 2px solid black; */
+           padding: 20px;
+           /* margin-top: 10px; */
+           display: flex;
+           justify-content: space-around;
+           padding: 10px;
+           margin-top: 5px;
+        }
+        .card{
+          background-color: rgb(165, 197, 136);
+        }
+        .card:hover{
+            transform: scale(1.1);
+            background-color: rgb(209, 18, 18);
+        }
+        .table.container{
+            /* border: 2px solid rgb(22, 21, 23); */
+            padding: 20px;
+            margin: 20px;
+        }
+        .tab{
+            /* border: 2px solid rgb(20, 19, 21); */
+            width: 100%;
+            background-color: rgb(165, 197, 136);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="title-container">
+            <h1 class="title">EXPENSES REPORT</h1>
+        </div>
+    <div class="inputs">
+        <div class="input-group flex-nowrap">
+
+  <input type="date" id="date" class="form-control" placeholder="date" aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+        <div class="input-group flex-nowrap">
+
+  <input type="text" id="amount" class="form-control" placeholder="AMOUNT" aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+<div class="input-group ">
+    <select class="form-select tr-type" aria-label="Default select example">
+        <option selected>TRANSACTION TYPE</option>
+        <option value="INCOME">INCOME</option>
+        <option value="EXPENSES">EXPENSES</option>
+    </select>
+</div>
+<button onclick="addBtn()" class="btn">
+    <h3>+</h3>
+</button>
+
+    </div>
+    <div class="cards">
+        <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">TOTAL BALANCE</h5>
+    <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+  <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z"/>
+</svg><span id="tb">0</span></h4>
+  </div>
+
+</div>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">TOTAL EXPENSES</h5>
+    <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+  <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z"/>
+</svg><span id="te">0</span></h4>
+  </div>
+
+</div>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">TOTAL INCOME</h5>
+    <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+  <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z"/>
+</svg><span id="ti">0</span></h4>
+  </div>
+ </div>
+
+    </div>
+    <div class="table-container">
+    <table class="table" id="tr-table">
+        <tr>
+        <th>DATE</th>
+        <th>TRANSACTION</th>
+        <th>AMOUNT</th>
+        <th>ACTION</th>
+        </tr>
+    </table>
+     </div>
+
+     <script>
+
+        let transactionTable=document.getElementById("tr-table")
+
+        function addBtn(){
+        let date=document.getElementById("date").value
+        let amount=document.getElementById("amount").value
+        let transactionType=document.getElementsByClassName("tr-type")[0].value
+
+        console.log(transactionType)
+
+        let row=document.createElement("tr");
+
+        let datecell=document.createElement("td")
+        datecell.innerText=date;
+        let trcell=document.createElement("td")
+        trcell.innerText=transactionType;
+        let amountcell=document.createElement("td")
+        amountcell.innerText=amount;
+
+        let deletecell=document.createElement("td")
+        let deleteBtn=document.createElement("button")
+        deleteBtn.innerText="DELETE"
+        deleteBtn.onclick=()=>deleteRow(row)
+          deletecell.appendChild(deleteBtn)
+
+
+          row.appendChild(datecell)
+          row.appendChild(trcell)
+          row.appendChild(amountcell)
+          row.appendChild(deletecell)
+
+          transactionTable.appendChild(row)
+
+
+          let totalBalance=document.getElementById("tb").innerText
+          let totalExpenses=document.getElementById("te").innerText
+          let totalIncome=document.getElementById("ti").innerText
+
+          if(transactionType=="INCOME"){
+            if(totalBalance=="0"){
+                document.getElementById("tb").innerText=amount
+            }else{
+                document.getElementById("tb").innerText=parseInt(totalBalance)+parseInt(amount)
+            }
+
+            if(totalIncome=="0"){
+                document.getElementById("ti").innerText=amount
+            }else{
+                document.getElementById("ti").innerText=parseInt(totalIncome)+parseInt(amount)
+            }
+          }else if(transactionType=="EXPENSES"){
+
+                document.getElementById("tb").innerText=parseInt(totalBalance)-parseInt(amount)
+
+            if(totalExpenses=="0"){
+                document.getElementById("te").innerText=amount
+            }else{
+                document.getElementById("te").innerText=parseInt(totalExpenses)+parseInt(amount)
+            }
+
+          }
+          function deleteRow(row){
+            row.remove()
+          }
+
+        }
+     </script>
+
+
+     </body>
+</html>
